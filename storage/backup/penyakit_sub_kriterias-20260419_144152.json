@@ -1,0 +1,58 @@
+[
+    {
+        "id": 5,
+        "penyakit_id": 3,
+        "kriteria_id": 3,
+        "sub_kriteria_id": 6,
+        "created_at": "2026-04-19 14:15:06",
+        "updated_at": "2026-04-19 14:15:06"
+    },
+    {
+        "id": 6,
+        "penyakit_id": 4,
+        "kriteria_id": 3,
+        "sub_kriteria_id": 5,
+        "created_at": "2026-04-19 14:15:06",
+        "updated_at": "2026-04-19 14:15:06"
+    },
+    {
+        "id": 7,
+        "penyakit_id": 5,
+        "kriteria_id": 3,
+        "sub_kriteria_id": 7,
+        "created_at": "2026-04-19 14:15:06",
+        "updated_at": "2026-04-19 14:15:06"
+    },
+    {
+        "id": 8,
+        "penyakit_id": 6,
+        "kriteria_id": 3,
+        "sub_kriteria_id": 6,
+        "created_at": "2026-04-19 14:15:06",
+        "updated_at": "2026-04-19 14:15:06"
+    },
+    {
+        "id": 9,
+        "penyakit_id": 7,
+        "kriteria_id": 3,
+        "sub_kriteria_id": 6,
+        "created_at": "2026-04-19 14:15:06",
+        "updated_at": "2026-04-19 14:15:06"
+    },
+    {
+        "id": 10,
+        "penyakit_id": 8,
+        "kriteria_id": 3,
+        "sub_kriteria_id": 7,
+        "created_at": "2026-04-19 14:15:06",
+        "updated_at": "2026-04-19 14:15:06"
+    },
+    {
+        "id": 11,
+        "penyakit_id": 9,
+        "kriteria_id": 3,
+        "sub_kriteria_id": 7,
+        "created_at": "2026-04-19 14:15:06",
+        "updated_at": "2026-04-19 14:15:06"
+    }
+]

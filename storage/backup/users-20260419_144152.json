@@ -1,0 +1,35 @@
+[
+    {
+        "id": 1,
+        "name": "tmp",
+        "email": "tmp+matrix@example.com",
+        "email_verified_at": null,
+        "password": "$2y$12$zqHXKcd9jtzp4jgdNKOc7.9dyG4Ni48j3X1Wqse508XwwQjFZ3YGi",
+        "role": "user",
+        "remember_token": null,
+        "created_at": "2026-04-19 14:15:57",
+        "updated_at": "2026-04-19 14:15:57"
+    },
+    {
+        "id": 2,
+        "name": "aruaru",
+        "email": "cyberrexz.cr@gmail.com",
+        "email_verified_at": null,
+        "password": "$2y$12$aBf1L1DPQRSY2MYqM77hZuazlxRCaTT5IH4aie7.DlEHeuQ6puWf.",
+        "role": "user",
+        "remember_token": null,
+        "created_at": "2026-04-19 14:27:06",
+        "updated_at": "2026-04-19 14:27:06"
+    },
+    {
+        "id": 3,
+        "name": "Admin",
+        "email": "admin@example.com",
+        "email_verified_at": null,
+        "password": "$2y$12$j1.n9JthgOwlL9WETyjeO.2anoTSq5Eu7FljEDteQZwarylm8i8gy",
+        "role": "admin",
+        "remember_token": null,
+        "created_at": "2026-04-19 14:31:31",
+        "updated_at": "2026-04-19 14:37:57"
+    }
+]

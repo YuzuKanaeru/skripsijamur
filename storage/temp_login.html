@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="9uEtb7WrJOgshLiy64qKQkG9JZRtYWASAy8aupGr">
+
+        <title>Laravel</title>
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+        <!-- Scripts -->
+                    <link rel="stylesheet" href="http://127.0.0.1:8000/css/app.css">
+            <link rel="stylesheet" href="http://127.0.0.1:8000/css/custom.css">
+            <script src="http://127.0.0.1:8000/js/app.js" defer></script>
+            <style>
+                body{font-family:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Arial;background:#f3f4f6;margin:0;color:#111}
+                .card{background:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+                a{color:var(--primary);text-decoration:none}
+            </style>
+            </head>
+    <body class="font-sans text-gray-900 antialiased">
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
+            <div>
+                <a href="/">
+                    <span class="app-logo-text w-20 h-20 fill-current text-gray-500">Laravel</span>
+
+                </a>
+            </div>
+
+            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+                <link rel="stylesheet" href="http://127.0.0.1:8000/css/custom.css">
+
+    <div class="login-split container">
+        <div class="login-left card">
+            <img src="http://127.0.0.1:8000/images/mushroom.svg" alt="mushroom" class="login-illustration">
+            <h3 class="login-title">Pelajari Tentang Penyakit Jamur Tiram</h3>
+            <p class="login-sub">Diagnosa dengan cepat menggunakan sistem pendukung keputusan berbasis SAW. Bersih, cepat, dan andal.</p>
+        </div>
+
+        <div class="login-right card">
+            <h2 style="margin:0 0 12px 0">Login ke SPK Penyakit Jamur Tiram</h2>
+            <p style="color:var(--muted);margin-bottom:18px">Masukkan Data Diri Anda untuk melanjutkan</p>
+
+            
+            <form method="POST" action="http://127.0.0.1:8000/login">
+                <input type="hidden" name="_token" value="9uEtb7WrJOgshLiy64qKQkG9JZRtYWASAy8aupGr" autocomplete="off">                <div class="form-row">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" required autofocus value="">
+                                    </div>
+
+                <div class="form-row">
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password" required autocomplete="current-password">
+                                    </div>
+
+                <div class="form-row" style="display:flex;align-items:center;justify-content:space-between">
+                    <label style="display:flex;align-items:center;gap:8px"><input type="checkbox" name="remember"> Ingat Saya</label>
+                    <div>
+                                                    <a href="http://127.0.0.1:8000/forgot-password" style="color:var(--accent)">Lupa?</a>
+                                            </div>
+                </div>
+
+                <div style="display:flex;gap:10px;align-items:center;margin-top:6px">
+                    <button class="btn btn-primary" type="submit">Log in</button>
+                                            <a href="http://127.0.0.1:8000/register" class="btn" style="border:1px solid #e6edf3">Buat akun</a>
+                                    </div>
+            </form>
+        </div>
+    </div>
+            </div>
+        </div>
+    </body>
+</html>
