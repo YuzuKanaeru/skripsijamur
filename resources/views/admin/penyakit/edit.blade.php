@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="card">
-    <form action="{{ route('admin.penyakit.update', $penyakit->id) }}" method="POST">
+    <form action="{{ route('admin.penyakit.update', $penyakit->id) }}" method="POST" enctype="multipart/form-data">
         @method('PUT')
         @include('admin.penyakit.form')
     </form>

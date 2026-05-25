@@ -80,7 +80,24 @@ class DataJamurController extends Controller
         // compute detailed matrices to show on the view
         $service = new SawService();
         $matrix = $service->computeDetailed($dataJamur);
-        return view('diagnose.show', compact('dataJamur','matrix'));
+        // determine image for top-ranked penyakit (look for files in public/images/penyakit/{id}.{ext})
+        $diagnosisImageUrl = null;
+        $top = $dataJamur->hasilSaws->sortBy('ranking')->first();
+        if ($top && $top->penyakit) {
+            $exts = ['jpg','jpeg','png','webp','gif'];
+            foreach ($exts as $ext) {
+                $file = public_path('images/penyakit/'.$top->penyakit->id.'.'.$ext);
+                if (file_exists($file)) {
+                    $diagnosisImageUrl = asset('images/penyakit/'.$top->penyakit->id.'.'.$ext);
+                    break;
+                }
+            }
+        }
+        if (!$diagnosisImageUrl) {
+            $diagnosisImageUrl = asset('images/mushroom.png');
+        }
+
+        return view('diagnose.show', compact('dataJamur','matrix','diagnosisImageUrl'));
     }
 
     /**

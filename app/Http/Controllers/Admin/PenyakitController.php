@@ -115,8 +115,79 @@ class PenyakitController extends Controller
             'nama_penyakit' => 'required|string|max:100',
             'deskripsi' => 'nullable|string',
             'solusi' => 'nullable|string',
+            'image' => 'nullable|image|max:4096',
         ]);
+
         $penyakit->update($data);
+
+        // handle uploaded image (crop center square and save as jpg)
+        if ($request->hasFile('image')) {
+            $img = $request->file('image');
+            $tmp = $img->getRealPath();
+            $info = @getimagesize($tmp);
+            if ($info !== false) {
+                $width = $info[0];
+                $height = $info[1];
+                $min = min($width, $height);
+                $cropX = intval(($width - $min) / 2);
+                $cropY = intval(($height - $min) / 2);
+
+                $mime = $info['mime'];
+                $src = null;
+
+                // Try to create image resource using available GD functions.
+                if (in_array($mime, ['image/jpeg','image/jpg'])) {
+                    if (function_exists('imagecreatefromjpeg')) {
+                        $src = imagecreatefromjpeg($tmp);
+                    }
+                } elseif ($mime === 'image/png') {
+                    if (function_exists('imagecreatefrompng')) {
+                        $src = imagecreatefrompng($tmp);
+                    }
+                } elseif ($mime === 'image/gif') {
+                    if (function_exists('imagecreatefromgif')) {
+                        $src = imagecreatefromgif($tmp);
+                    }
+                } elseif ($mime === 'image/webp') {
+                    if (function_exists('imagecreatefromwebp')) {
+                        $src = imagecreatefromwebp($tmp);
+                    } elseif (function_exists('imagecreatefromjpeg')) {
+                        // fallback to jpeg loader if webp loader missing
+                        $src = imagecreatefromjpeg($tmp);
+                    }
+                }
+
+                $dir = public_path('images/penyakit');
+                if (!file_exists($dir)) mkdir($dir, 0755, true);
+
+                // remove existing files for this penyakit id
+                $files = glob($dir.'/'.$penyakit->id.'.*');
+                if ($files) foreach ($files as $f) @unlink($f);
+
+                if ($src) {
+                    $target = 360; // output square size
+                    $dst = imagecreatetruecolor($target, $target);
+                    // preserve transparency for png/gif
+                    if (in_array($mime, ['image/png','image/gif'])) {
+                        imagecolortransparent($dst, imagecolorallocatealpha($dst, 0, 0, 0, 127));
+                        imagealphablending($dst, false);
+                        imagesavealpha($dst, true);
+                    }
+                    imagecopyresampled($dst, $src, 0, 0, $cropX, $cropY, $target, $target, $min, $min);
+
+                    $outFile = $dir.'/'.$penyakit->id.'.jpg';
+                    imagejpeg($dst, $outFile, 85);
+                    imagedestroy($dst);
+                    imagedestroy($src);
+                } else {
+                    // GD image functions not available — fallback: save original upload without cropping
+                    $extension = $img->getClientOriginalExtension() ?: 'jpg';
+                    $outFileName = $penyakit->id.'.'.strtolower($extension);
+                    $img->move($dir, $outFileName);
+                }
+            }
+        }
+
         return redirect()->route('admin.penyakit.index')->with('success', 'Penyakit diperbarui');
     }
 

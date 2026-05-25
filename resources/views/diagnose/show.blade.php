@@ -14,12 +14,25 @@
         </div>
     </div>
 
-    <h3>Detail Input</h3>
-    <ul>
-        @foreach($dataJamur->detailDataJamur as $d)
-            <li>{{ $d->kriteria->nama_kriteria ?? '' }}: {{ $d->subKriteria->nama_sub ?? '' }} ({{ $d->nilai }})</li>
-        @endforeach
-    </ul>
+    @php $top = $dataJamur->hasilSaws->sortBy('ranking')->first(); @endphp
+    <div style="display:flex;align-items:flex-start;gap:28px;margin-bottom:18px">
+        <div style="flex:1;min-width:200px">
+            <h3 style="margin-top:0">Detail Input</h3>
+            <ul>
+                @foreach($dataJamur->detailDataJamur as $d)
+                    <li>{{ $d->kriteria->nama_kriteria ?? '' }}: {{ $d->subKriteria->nama_sub ?? '' }} ({{ $d->nilai }})</li>
+                @endforeach
+            </ul>
+        </div>
+        <div style="width:340px;flex-shrink:0;text-align:center">
+            @if(isset($diagnosisImageUrl) && $top && $top->penyakit)
+                <div style="width:320px;height:220px;overflow:hidden;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.08);margin:0 auto">
+                    <img src="{{ $diagnosisImageUrl }}" alt="{{ $top->penyakit->nama_penyakit }}" style="width:100%;height:100%;object-fit:cover;display:block">
+                </div>
+                <div style="margin-top:8px;font-weight:600">{{ $top->penyakit->nama_penyakit }}</div>
+            @endif
+        </div>
+    </div>
 
     <h3>Hasil SAW (Ranking)</h3>
     <table class="table">
